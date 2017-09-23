@@ -11,6 +11,6 @@ class Api::V1::MaterialsController < ApplicationController
 
   private
   def material_params
-    params.permit(:body)
+    params.permit(:typeof, :description, :material)
   end
 end
