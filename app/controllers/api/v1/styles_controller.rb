@@ -9,8 +9,15 @@ class Api::V1::StylesController < ApplicationController
     render json: @style, status: 201
   end
 
+  def update
+    @style = Style.find(params[:id])
+    @material = Material.find(params[:material][:id])
+    @style.materials << @material
+    render json: @style, status: 201
+  end
+
   private
   def style_params
-    params.permit(:body)
+    params.permit(:body, :data, :id, :style, :typeof, :name, :description, :material)
   end
 end
